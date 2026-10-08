@@ -23,7 +23,7 @@
 <br />
 
 <a href="https://github.com/mohamed005cheikh-rgb?tab=repositories">
-  <img src="qr.jpg" alt="QR code — full list of repositories" width="170" />
+  <img src="qr.png" alt="QR code — full list of repositories" width="170" />
 </a>
 
 <sub>All repositories, in one place.</sub>
