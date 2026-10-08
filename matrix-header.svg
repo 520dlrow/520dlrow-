@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+  <rect width="100%" height="100%" fill="#05020a" />
+  <style>
+    .matrix { font-family: 'Courier New', monospace; font-size: 14px; fill: #00ff41; font-weight: bold; }
+    .a1 { animation: fall 2.5s linear infinite; }
+    .a2 { animation: fall 3.5s linear infinite; animation-delay: 1s; }
+    .a3 { animation: fall 2s linear infinite; animation-delay: 0.5s; }
+    .a4 { animation: fall 4s linear infinite; animation-delay: 2s; }
+    .a5 { animation: fall 3s linear infinite; animation-delay: 1.5s; }
+    
+    @keyframes fall {
+      0% { transform: translateY(-200px); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(200px); opacity: 0; }
+    }
+  </style>
+  <g class="matrix">
+    <text x="20" y="0" class="a1">0101</text>
+    <text x="70" y="0" class="a2">1100</text>
+    <text x="120" y="0" class="a3">1010</text>
+    <text x="170" y="0" class="a4">0110</text>
+    <text x="220" y="0" class="a5">0011</text>
+    <text x="270" y="0" class="a1">1001</text>
+    <text x="320" y="0" class="a3">0111</text>
+    <text x="370" y="0" class="a5">1101</text>
+    <text x="420" y="0" class="a2">0010</text>
+    <text x="470" y="0" class="a4">1011</text>
+    <text x="520" y="0" class="a1">0100</text>
+    <text x="570" y="0" class="a3">1110</text>
+    <text x="620" y="0" class="a5">1000</text>
+    <text x="670" y="0" class="a2">0110</text>
+    <text x="720" y="0" class="a4">1101</text>
+    <text x="770" y="0" class="a1">0011</text>
+    <text x="820" y="0" class="a3">1010</text>
+    <text x="870" y="0" class="a5">0101</text>
+    <text x="920" y="0" class="a2">1111</text>
+    <text x="970" y="0" class="a4">0000</text>
+    <text x="1020" y="0" class="a1">1010</text>
+    <text x="1070" y="0" class="a3">0110</text>
+    <text x="1120" y="0" class="a5">1001</text>
+    <text x="1170" y="0" class="a2">1100</text>
+  </g>
+</svg>
