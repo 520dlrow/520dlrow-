@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0504"/>
+      <stop offset="60%" stop-color="#140804"/>
+      <stop offset="100%" stop-color="#1a0a05"/>
+    </linearGradient>
+
+    <linearGradient id="deep" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#3d1206"/>
+      <stop offset="50%" stop-color="#7a2808"/>
+      <stop offset="100%" stop-color="#b3400d"/>
+    </linearGradient>
+
+    <linearGradient id="mid" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#b3400d"/>
+      <stop offset="50%" stop-color="#e8631c"/>
+      <stop offset="100%" stop-color="#ff8c42"/>
+    </linearGradient>
+
+    <linearGradient id="hot" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#ff8c42"/>
+      <stop offset="60%" stop-color="#ffb866"/>
+      <stop offset="100%" stop-color="#ffd93d"/>
+    </linearGradient>
+
+    <radialGradient id="glow" cx="50%" cy="100%" r="75%">
+      <stop offset="0%" stop-color="#ff8c42" stop-opacity="0.28"/>
+      <stop offset="55%" stop-color="#c1440e" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0a0504" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="280" fill="url(#bg)"/>
+  <rect width="1200" height="280" fill="url(#glow)"/>
+
+  <path fill="url(#deep)" opacity="0.9">
+    <animate attributeName="d"
+      values="
+        M0,280 L0,190 Q80,150 160,180 Q240,210 320,165 Q400,120 480,155 Q560,190 640,140 Q720,90 800,140 Q880,190 960,135 Q1040,80 1120,125 Q1170,155 1200,140 L1200,280 Z;
+        M0,280 L0,200 Q80,160 160,190 Q240,220 320,175 Q400,130 480,165 Q560,200 640,150 Q720,100 800,150 Q880,200 960,145 Q1040,90 1120,135 Q1170,165 1200,150 L1200,280 Z;
+        M0,280 L0,190 Q80,150 160,180 Q240,210 320,165 Q400,120 480,155 Q560,190 640,140 Q720,90 800,140 Q880,190 960,135 Q1040,80 1120,125 Q1170,155 1200,140 L1200,280 Z"
+      dur="6s" repeatCount="indefinite"/>
+  </path>
+
+  <path fill="url(#mid)" opacity="0.95">
+    <animate attributeName="d"
+      values="
+        M0,280 L0,215 Q100,190 200,205 Q300,220 400,185 Q500,150 600,175 Q700,200 800,165 Q900,130 1000,155 Q1100,180 1200,165 L1200,280 Z;
+        M0,280 L0,225 Q100,200 200,215 Q300,230 400,195 Q500,160 600,185 Q700,210 800,175 Q900,140 1000,165 Q1100,190 1200,175 L1200,280 Z;
+        M0,280 L0,215 Q100,190 200,205 Q300,220 400,185 Q500,150 600,175 Q700,200 800,165 Q900,130 1000,155 Q1100,180 1200,165 L1200,280 Z"
+      dur="4.5s" repeatCount="indefinite"/>
+  </path>
+
+  <path fill="url(#hot)" opacity="0.85">
+    <animate attributeName="d"
+      values="
+        M200,280 Q280,215 360,240 Q440,265 520,225 Q600,185 680,215 Q760,245 840,205 Q920,165 1000,195 L1000,280 Z;
+        M200,280 Q280,225 360,250 Q440,275 520,235 Q600,195 680,225 Q760,255 840,215 Q920,175 1000,205 L1000,280 Z;
+        M200,280 Q280,215 360,240 Q440,265 520,225 Q600,185 680,215 Q760,245 840,205 Q920,165 1000,195 L1000,280 Z"
+      dur="3.8s" repeatCount="indefinite"/>
+  </path>
+
+  <g fill="#ffd93d">
+    <circle cx="340" cy="160" r="1.5" opacity="0.7">
+      <animate attributeName="cy" values="160;120;90" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;0.4;0" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="720" cy="180" r="1.2" opacity="0.6">
+      <animate attributeName="cy" values="180;140;110" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.3;0" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="900" cy="170" r="1" opacity="0.5">
+      <animate attributeName="cy" values="170;130;95" dur="4.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0.3;0" dur="4.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="500" cy="150" r="1.3" opacity="0.6">
+      <animate attributeName="cy" values="150;110;80" dur="5.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.35;0" dur="5.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <text x="600" y="105" text-anchor="middle"
+    font-family="Cinzel, 'Trajan Pro', Georgia, 'Times New Roman', serif"
+    font-size="58" font-weight="700" fill="#ffe5b4" letter-spacing="3">
+    Mohamed Cheikh
+  </text>
+
+  <text x="600" y="142" text-anchor="middle"
+    font-family="Cinzel, 'Trajan Pro', Georgia, 'Times New Roman', serif"
+    font-size="14" font-weight="600" fill="#ff8c42" letter-spacing="6">
+    MC88 · HOBBYIST WEB BUILDER
+  </text>
+</svg>
