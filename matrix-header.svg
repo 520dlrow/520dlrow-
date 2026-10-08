@@ -1,44 +1,138 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
-  <rect width="100%" height="100%" fill="#05020a" />
-  <style>
-    .matrix { font-family: 'Courier New', monospace; font-size: 14px; fill: #00ff41; font-weight: bold; }
-    .a1 { animation: fall 2.5s linear infinite; }
-    .a2 { animation: fall 3.5s linear infinite; animation-delay: 1s; }
-    .a3 { animation: fall 2s linear infinite; animation-delay: 0.5s; }
-    .a4 { animation: fall 4s linear infinite; animation-delay: 2s; }
-    .a5 { animation: fall 3s linear infinite; animation-delay: 1.5s; }
-    
-    @keyframes fall {
-      0% { transform: translateY(-200px); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(200px); opacity: 0; }
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"
+     preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+  <defs>
+    <radialGradient id="vig" cx="50%" cy="50%" r="72%">
+      <stop offset="50%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.9"/>
+    </radialGradient>
+    <pattern id="scan" width="3" height="3" patternUnits="userSpaceOnUse">
+      <rect width="3" height="1.5" fill="#000" opacity="0.28"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="600" fill="#000"/>
+  <g id="rain"></g>
+  <rect width="1200" height="600" fill="url(#vig)"/>
+  <rect width="1200" height="600" fill="url(#scan)" opacity="0.6"/>
+
+  <script type="text/javascript"><![CDATA[
+  (function () {
+    var NS = "http://www.w3.org/2000/svg";
+    var W = 1200, H = 600;
+    var FONT = 18, COLW = 18;
+    var COLS = Math.floor(W / COLW);
+    var ROWS = Math.floor(H / FONT) + 2;
+
+    var GLYPHS = "アァイィウゥエェオォカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポヴッ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ:=*+-<>¦｜";
+    var GLEN = GLYPHS.length;
+
+    var rain = document.getElementById("rain");
+    rain.setAttribute("font-family", "'MS Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP','Courier New',monospace");
+    rain.setAttribute("font-size", FONT);
+    rain.setAttribute("font-weight", "bold");
+    rain.setAttribute("text-anchor", "middle");
+
+    var columns = [];
+    var frag = document.createDocumentFragment();
+
+    for (var c = 0; c < COLS; c++) {
+      var g = document.createElementNS(NS, "g");
+      var cells = new Array(ROWS);
+      var alphas = new Array(ROWS);
+      var fills = new Array(ROWS);
+      var x = (c * COLW + COLW / 2).toFixed(1);
+
+      for (var r = 0; r < ROWS; r++) {
+        var t = document.createElementNS(NS, "text");
+        t.setAttribute("x", x);
+        t.setAttribute("y", ((r + 1) * FONT - 4).toFixed(1));
+        t.setAttribute("opacity", "0");
+        t.setAttribute("fill", "#00ff41");
+        t.textContent = GLYPHS.charAt((Math.random() * GLEN) | 0);
+        g.appendChild(t);
+        cells[r] = t;
+        alphas[r] = 0;
+        fills[r] = "#00ff41";
+      }
+
+      frag.appendChild(g);
+      columns.push({
+        head: (Math.random() * ROWS) | 0,
+        len: 8 + ((Math.random() * 18) | 0),
+        interval: 35 + Math.random() * 80,
+        acc: Math.random() * 60,
+        cells: cells,
+        alphas: alphas,
+        fills: fills
+      });
     }
-  </style>
-  <g class="matrix">
-    <text x="20" y="0" class="a1">0101</text>
-    <text x="70" y="0" class="a2">1100</text>
-    <text x="120" y="0" class="a3">1010</text>
-    <text x="170" y="0" class="a4">0110</text>
-    <text x="220" y="0" class="a5">0011</text>
-    <text x="270" y="0" class="a1">1001</text>
-    <text x="320" y="0" class="a3">0111</text>
-    <text x="370" y="0" class="a5">1101</text>
-    <text x="420" y="0" class="a2">0010</text>
-    <text x="470" y="0" class="a4">1011</text>
-    <text x="520" y="0" class="a1">0100</text>
-    <text x="570" y="0" class="a3">1110</text>
-    <text x="620" y="0" class="a5">1000</text>
-    <text x="670" y="0" class="a2">0110</text>
-    <text x="720" y="0" class="a4">1101</text>
-    <text x="770" y="0" class="a1">0011</text>
-    <text x="820" y="0" class="a3">1010</text>
-    <text x="870" y="0" class="a5">0101</text>
-    <text x="920" y="0" class="a2">1111</text>
-    <text x="970" y="0" class="a4">0000</text>
-    <text x="1020" y="0" class="a1">1010</text>
-    <text x="1070" y="0" class="a3">0110</text>
-    <text x="1120" y="0" class="a5">1001</text>
-    <text x="1170" y="0" class="a2">1100</text>
-  </g>
+    rain.appendChild(frag);
+
+    function draw(col) {
+      var head = col.head, len = col.len;
+
+      for (var r = 0; r < ROWS; r++) {
+        var d = head - r;
+        var a = 0, fill = "#00ff41";
+
+        if (d >= 0 && d <= len) {
+          if (d === 0) {          // 头字符：偏白高亮
+            a = 1;
+            fill = "#d6ffdd";
+          } else {                 // 拖尾：指数衰减
+            a = Math.pow(1 - d / len, 1.9);
+          }
+        }
+
+        var q = a < 0.03 ? 0 : Math.round(a * 100) / 100;
+        var cell = col.cells[r];
+
+        if (q !== col.alphas[r]) {
+          cell.setAttribute("opacity", q);
+          col.alphas[r] = q;
+        }
+
+        if (q > 0) {
+          if (fill !== col.fills[r]) {
+            cell.setAttribute("fill", fill);
+            col.fills[r] = fill;
+          }
+          if (Math.random() < 0.3) {   // 随机跳字
+            cell.textContent = GLYPHS.charAt((Math.random() * GLEN) | 0);
+          }
+        }
+      }
+    }
+
+    for (var i = 0; i < columns.length; i++) draw(columns[i]);
+
+    var last = 0;
+    function frame(now) {
+      if (!last) last = now;
+      var dt = now - last;
+      last = now;
+      if (dt > 250) dt = 250;
+
+      for (var i = 0; i < columns.length; i++) {
+        var col = columns[i];
+        col.acc += dt;
+        var guard = 0;
+
+        while (col.acc >= col.interval && guard++ < 3) {
+          col.acc -= col.interval;
+          col.head++;
+
+          if (col.head - col.len > ROWS) {     // 归位到屏幕上方
+            col.head = -((Math.random() * 30) | 0) - 1;
+            col.len = 8 + ((Math.random() * 20) | 0);
+            col.interval = 35 + Math.random() * 80;
+          }
+          draw(col);
+        }
+      }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  })();
+  ]]></script>
 </svg>
