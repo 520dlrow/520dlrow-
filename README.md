@@ -35,11 +35,6 @@
       <img src="https://readme-typing-svg.demolab.com?font=Grenze+Gotisch&weight=700&size=18&duration=2400&pause=700&color=eaf2ff&background=0a1220&radius=0&center=true&vCenter=true&width=680&height=38&lines=%3E+contact;email++++%3A+mohamed005cheikh%40gmail.com;whatsapp+%3A+%2B222+30+72+64+75" width="680" style="display:block;" />
     </td>
   </tr>
-  <tr>
-    <td align="center" style="padding: 0; margin: 0;">
-      <img src="https://readme-typing-svg.demolab.com?font=Grenze+Gotisch&weight=700&size=20&duration=2000&pause=1000&color=eaf2ff&background=0a1220&radius=0&center=true&vCenter=true&width=680&height=42&lines=%E2%86%93+Scan+for+everything+%E2%86%93" width="680" style="display:block;" />
-    </td>
-  </tr>
 </table>
 
 <img src="bottom-gradient.svg" width="100%" />
@@ -48,18 +43,29 @@
 
 <br />
 
-<a href="https://github.com/mohamed005cheikh-rgb?tab=repositories">
-  <img src="qr.png" width="140" />
-</a>
-
-<sub>All repositories, in one place.</sub>
+<table align="center" border="0" cellpadding="20" cellspacing="0" width="680" style="background-color: #0a1220; border-radius: 12px;">
+  <tr>
+    <td width="50%" align="center" valign="middle">
+      <a href="https://github.com/mohamed005cheikh-rgb?tab=repositories">
+        <img src="qr.png" width="140" />
+      </a>
+      <br />
+      <sub style="color: #a9c2ee; font-family: sans-serif;">All repositories, in one place.</sub>
+    </td>
+    <td width="50%" align="center" valign="middle">
+      <p style="color: #eaf2ff; font-family: 'Grenze Gotisch', serif; font-size: 20px; font-weight: 700; margin-bottom: 10px;">&gt; contact</p>
+      <a href="mailto:mohamed005cheikh@gmail.com">
+        <img src="https://img.shields.io/badge/mohamed005cheikh%40gmail.com-0a1220?style=flat-square&logo=gmail&logoColor=eaf2ff&labelColor=0a1220" style="margin-bottom: 5px;" />
+      </a>
+      <br />
+      <a href="https://wa.me/22230726475">
+        <img src="https://img.shields.io/badge/%2B222%2030%2072%2064%2075-0a1220?style=flat-square&logo=whatsapp&logoColor=eaf2ff&labelColor=0a1220" />
+      </a>
+    </td>
+  </tr>
+</table>
 
 <br />
-
-<a href="mailto:mohamed005cheikh@gmail.com"><img src="https://img.shields.io/badge/mohamed005cheikh%40gmail.com-0a1220?style=flat-square&logo=gmail&logoColor=eaf2ff&labelColor=0a1220" /></a>
-<a href="https://wa.me/22230726475"><img src="https://img.shields.io/badge/%2B222%2030%2072%2064%2075-0a1220?style=flat-square&logo=whatsapp&logoColor=eaf2ff&labelColor=0a1220" /></a>
-
-<br /><br />
 
 <sub>© 2026 — Mohamed Cheikh · MC88</sub>
 
