@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200" width="100%" height="100%">
+  <defs>
+    <filter id="noiseBg" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.12 0" />
+    </filter>
+    <filter id="beamNoise" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="1.5" numOctaves="2" result="noise" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.4 0" in="noise" result="coloredNoise" />
+      <feComposite operator="in" in="coloredNoise" in2="SourceGraphic" result="texturedBeam" />
+      <feBlend mode="screen" in="texturedBeam" in2="SourceGraphic" />
+    </filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <linearGradient id="beamGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#eaff00" stop-opacity="0.9" />
+      <stop offset="30%" stop-color="#ccff00" stop-opacity="0.8" />
+      <stop offset="70%" stop-color="#b3e600" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#99cc00" stop-opacity="0.2" />
+    </linearGradient>
+    <linearGradient id="beamCore" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8" />
+      <stop offset="40%" stop-color="#eaff00" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#ccff00" stop-opacity="0.1" />
+    </linearGradient>
+    <radialGradient id="groundGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ccff00" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#99cc00" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="ufoHull" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4a4a4a" />
+      <stop offset="20%" stop-color="#1a1a1a" />
+      <stop offset="50%" stop-color="#0a0a0a" />
+      <stop offset="80%" stop-color="#222222" />
+      <stop offset="100%" stop-color="#050505" />
+    </linearGradient>
+    <linearGradient id="ufoDome" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#555555" />
+      <stop offset="40%" stop-color="#111111" />
+      <stop offset="100%" stop-color="#000000" />
+    </linearGradient>
+    <linearGradient id="ufoRim" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#111" />
+      <stop offset="20%" stop-color="#666" />
+      <stop offset="50%" stop-color="#222" />
+      <stop offset="80%" stop-color="#888" />
+      <stop offset="100%" stop-color="#111" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="#0a0a0a" />
+  <rect width="100%" height="100%" filter="url(#noiseBg)" opacity="0.8" />
+  <ellipse cx="400" cy="180" rx="140" ry="20" fill="#000000" opacity="0.6" />
+  <g id="tractor-beam">
+    <polygon points="350,150 450,150 720,1180 80,1180" fill="url(#beamGradient)" />
+    <polygon points="370,150 430,150 580,1180 220,1180" fill="url(#beamCore)" />
+    <polygon points="350,150 450,150 720,1180 80,1180" fill="#ccff00" filter="url(#beamNoise)" opacity="0.3" style="mix-blend-mode: screen;" />
+    <polygon points="340,150 460,150 740,1180 60,1180" fill="none" stroke="#ccff00" stroke-width="10" opacity="0.2" filter="url(#glow)" />
+  </g>
+  <g id="ground-glow">
+    <ellipse cx="400" cy="1160" rx="350" ry="40" fill="url(#groundGlow)" />
+    <ellipse cx="400" cy="1160" rx="150" ry="15" fill="#ccff00" opacity="0.4" filter="url(#glow)" />
+    <path d="M 150 1160 Q 400 1180 650 1160" fill="none" stroke="#ccff00" stroke-width="4" opacity="0.6" filter="url(#glow)" />
+  </g>
+  <g id="ufo">
+    <ellipse cx="400" cy="145" rx="110" ry="20" fill="#050505" />
+    <path d="M 220 120 C 220 80 280 70 400 70 C 520 70 580 80 580 120 C 580 160 520 160 400 160 C 280 160 220 160 220 120 Z" fill="url(#ufoHull)" />
+    <path d="M 230 105 C 280 75 340 75 400 75 C 460 75 520 75 570 105 C 520 95 460 95 400 95 C 340 95 280 95 230 105 Z" fill="#666666" opacity="0.4" />
+    <ellipse cx="400" cy="145" rx="115" ry="15" fill="none" stroke="#222222" stroke-width="4" />
+    <ellipse cx="400" cy="90" rx="120" ry="20" fill="url(#ufoRim)" opacity="0.8" />
+    <path d="M 320 90 C 320 30 360 20 400 20 C 440 20 480 30 480 90 C 480 110 440 115 400 115 C 360 115 320 110 320 90 Z" fill="url(#ufoDome)" />
+    <path d="M 340 60 C 350 35 380 30 400 30 C 420 30 440 35 450 60 C 430 45 400 40 380 45 C 360 50 350 55 340 60 Z" fill="#888888" opacity="0.5" />
+    <path d="M 225 120 C 260 100 340 95 400 95 C 460 95 540 100 575 120" fill="none" stroke="#999999" stroke-width="2" opacity="0.6" />
+    <ellipse cx="400" cy="150" rx="80" ry="8" fill="#ccff00" opacity="0.6" filter="url(#glow)" />
+  </g>
+</svg>
