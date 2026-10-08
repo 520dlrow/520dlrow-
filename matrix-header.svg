@@ -1,138 +1,63 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"
-     preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
-  <defs>
-    <radialGradient id="vig" cx="50%" cy="50%" r="72%">
-      <stop offset="50%" stop-color="#000" stop-opacity="0"/>
-      <stop offset="100%" stop-color="#000" stop-opacity="0.9"/>
-    </radialGradient>
-    <pattern id="scan" width="3" height="3" patternUnits="userSpaceOnUse">
-      <rect width="3" height="1.5" fill="#000" opacity="0.28"/>
-    </pattern>
-  </defs>
-
-  <rect width="1200" height="600" fill="#000"/>
-  <g id="rain"></g>
-  <rect width="1200" height="600" fill="url(#vig)"/>
-  <rect width="1200" height="600" fill="url(#scan)" opacity="0.6"/>
-
-  <script type="text/javascript"><![CDATA[
-  (function () {
-    var NS = "http://www.w3.org/2000/svg";
-    var W = 1200, H = 600;
-    var FONT = 18, COLW = 18;
-    var COLS = Math.floor(W / COLW);
-    var ROWS = Math.floor(H / FONT) + 2;
-
-    var GLYPHS = "アァイィウゥエェオォカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポヴッ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ:=*+-<>¦｜";
-    var GLEN = GLYPHS.length;
-
-    var rain = document.getElementById("rain");
-    rain.setAttribute("font-family", "'MS Gothic','Hiragino Kaku Gothic ProN','Noto Sans JP','Courier New',monospace");
-    rain.setAttribute("font-size", FONT);
-    rain.setAttribute("font-weight", "bold");
-    rain.setAttribute("text-anchor", "middle");
-
-    var columns = [];
-    var frag = document.createDocumentFragment();
-
-    for (var c = 0; c < COLS; c++) {
-      var g = document.createElementNS(NS, "g");
-      var cells = new Array(ROWS);
-      var alphas = new Array(ROWS);
-      var fills = new Array(ROWS);
-      var x = (c * COLW + COLW / 2).toFixed(1);
-
-      for (var r = 0; r < ROWS; r++) {
-        var t = document.createElementNS(NS, "text");
-        t.setAttribute("x", x);
-        t.setAttribute("y", ((r + 1) * FONT - 4).toFixed(1));
-        t.setAttribute("opacity", "0");
-        t.setAttribute("fill", "#00ff41");
-        t.textContent = GLYPHS.charAt((Math.random() * GLEN) | 0);
-        g.appendChild(t);
-        cells[r] = t;
-        alphas[r] = 0;
-        fills[r] = "#00ff41";
-      }
-
-      frag.appendChild(g);
-      columns.push({
-        head: (Math.random() * ROWS) | 0,
-        len: 8 + ((Math.random() * 18) | 0),
-        interval: 35 + Math.random() * 80,
-        acc: Math.random() * 60,
-        cells: cells,
-        alphas: alphas,
-        fills: fills
-      });
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+  <rect width="100%" height="100%" fill="#05020a" />
+  <style>
+    .m { font-family: 'Courier New', monospace; font-size: 16px; fill: #00ff41; font-weight: bold; opacity: 0; }
+    .glow { filter: drop-shadow(0 0 4px #00ff41); }
+    .fall { animation: fall 3s linear infinite; }
+    .f1 { animation-duration: 2.5s; animation-delay: 0s; }
+    .f2 { animation-duration: 3.5s; animation-delay: 0.5s; }
+    .f3 { animation-duration: 2s; animation-delay: 1s; }
+    .f4 { animation-duration: 4s; animation-delay: 1.5s; }
+    .f5 { animation-duration: 2.8s; animation-delay: 2s; }
+    
+    @keyframes fall {
+      0% { transform: translateY(-100px); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(200px); opacity: 0; }
     }
-    rain.appendChild(frag);
-
-    function draw(col) {
-      var head = col.head, len = col.len;
-
-      for (var r = 0; r < ROWS; r++) {
-        var d = head - r;
-        var a = 0, fill = "#00ff41";
-
-        if (d >= 0 && d <= len) {
-          if (d === 0) {          // 头字符：偏白高亮
-            a = 1;
-            fill = "#d6ffdd";
-          } else {                 // 拖尾：指数衰减
-            a = Math.pow(1 - d / len, 1.9);
-          }
-        }
-
-        var q = a < 0.03 ? 0 : Math.round(a * 100) / 100;
-        var cell = col.cells[r];
-
-        if (q !== col.alphas[r]) {
-          cell.setAttribute("opacity", q);
-          col.alphas[r] = q;
-        }
-
-        if (q > 0) {
-          if (fill !== col.fills[r]) {
-            cell.setAttribute("fill", fill);
-            col.fills[r] = fill;
-          }
-          if (Math.random() < 0.3) {   // 随机跳字
-            cell.textContent = GLYPHS.charAt((Math.random() * GLEN) | 0);
-          }
-        }
-      }
-    }
-
-    for (var i = 0; i < columns.length; i++) draw(columns[i]);
-
-    var last = 0;
-    function frame(now) {
-      if (!last) last = now;
-      var dt = now - last;
-      last = now;
-      if (dt > 250) dt = 250;
-
-      for (var i = 0; i < columns.length; i++) {
-        var col = columns[i];
-        col.acc += dt;
-        var guard = 0;
-
-        while (col.acc >= col.interval && guard++ < 3) {
-          col.acc -= col.interval;
-          col.head++;
-
-          if (col.head - col.len > ROWS) {     // 归位到屏幕上方
-            col.head = -((Math.random() * 30) | 0) - 1;
-            col.len = 8 + ((Math.random() * 20) | 0);
-            col.interval = 35 + Math.random() * 80;
-          }
-          draw(col);
-        }
-      }
-      requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
-  })();
-  ]]></script>
+  </style>
+  
+  <g class="m glow">
+    <!-- Columns of falling code -->
+    <text x="20" y="0" class="fall f1">0101</text>
+    <text x="50" y="0" class="fall f3">1100</text>
+    <text x="80" y="0" class="fall f2">1010</text>
+    <text x="110" y="0" class="fall f4">0110</text>
+    <text x="140" y="0" class="fall f5">0011</text>
+    <text x="170" y="0" class="fall f1">1001</text>
+    <text x="200" y="0" class="fall f3">0111</text>
+    <text x="230" y="0" class="fall f2">1101</text>
+    <text x="260" y="0" class="fall f4">0010</text>
+    <text x="290" y="0" class="fall f5">1011</text>
+    <text x="320" y="0" class="fall f1">0100</text>
+    <text x="350" y="0" class="fall f3">1110</text>
+    <text x="380" y="0" class="fall f2">1000</text>
+    <text x="410" y="0" class="fall f4">0110</text>
+    <text x="440" y="0" class="fall f5">1101</text>
+    <text x="470" y="0" class="fall f1">0011</text>
+    <text x="500" y="0" class="fall f3">1010</text>
+    <text x="530" y="0" class="fall f2">0101</text>
+    <text x="560" y="0" class="fall f4">1111</text>
+    <text x="590" y="0" class="fall f5">0000</text>
+    <text x="620" y="0" class="fall f1">1010</text>
+    <text x="650" y="0" class="fall f3">0110</text>
+    <text x="680" y="0" class="fall f2">1001</text>
+    <text x="710" y="0" class="fall f4">1100</text>
+    <text x="740" y="0" class="fall f5">0101</text>
+    <text x="770" y="0" class="fall f1">1100</text>
+    <text x="800" y="0" class="fall f3">1010</text>
+    <text x="830" y="0" class="fall f2">0110</text>
+    <text x="860" y="0" class="fall f4">0011</text>
+    <text x="890" y="0" class="fall f5">1001</text>
+    <text x="920" y="0" class="fall f1">0111</text>
+    <text x="950" y="0" class="fall f3">1101</text>
+    <text x="980" y="0" class="fall f2">0010</text>
+    <text x="1010" y="0" class="fall f4">1011</text>
+    <text x="1040" y="0" class="fall f5">0100</text>
+    <text x="1070" y="0" class="fall f1">1110</text>
+    <text x="1100" y="0" class="fall f3">1000</text>
+    <text x="1130" y="0" class="fall f2">0110</text>
+    <text x="1160" y="0" class="fall f4">1101</text>
+  </g>
 </svg>
