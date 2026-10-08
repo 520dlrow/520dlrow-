@@ -1,33 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" preserveAspectRatio="xMidYMid slice">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#0a0504"/>
-      <stop offset="60%" stop-color="#140804"/>
-      <stop offset="100%" stop-color="#1a0a05"/>
+      <stop offset="0%" stop-color="#04080f"/>
+      <stop offset="60%" stop-color="#071224"/>
+      <stop offset="100%" stop-color="#0a1a3d"/>
     </linearGradient>
 
     <linearGradient id="deep" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0%" stop-color="#3d1206"/>
-      <stop offset="50%" stop-color="#7a2808"/>
-      <stop offset="100%" stop-color="#b3400d"/>
+      <stop offset="0%" stop-color="#0a1a3d"/>
+      <stop offset="50%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#2d5bd1"/>
     </linearGradient>
 
     <linearGradient id="mid" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0%" stop-color="#b3400d"/>
-      <stop offset="50%" stop-color="#e8631c"/>
-      <stop offset="100%" stop-color="#ff8c42"/>
+      <stop offset="0%" stop-color="#2d5bd1"/>
+      <stop offset="50%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
     </linearGradient>
 
     <linearGradient id="hot" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0%" stop-color="#ff8c42"/>
-      <stop offset="60%" stop-color="#ffb866"/>
-      <stop offset="100%" stop-color="#ffd93d"/>
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="60%" stop-color="#93c5fd"/>
+      <stop offset="100%" stop-color="#dbeafe"/>
     </linearGradient>
 
     <radialGradient id="glow" cx="50%" cy="100%" r="75%">
-      <stop offset="0%" stop-color="#ff8c42" stop-opacity="0.28"/>
-      <stop offset="55%" stop-color="#c1440e" stop-opacity="0.10"/>
-      <stop offset="100%" stop-color="#0a0504" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.30"/>
+      <stop offset="55%" stop-color="#1e3a8a" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#04080f" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
@@ -61,7 +61,7 @@
       dur="3.8s" repeatCount="indefinite"/>
   </path>
 
-  <g fill="#ffd93d">
+  <g fill="#dbeafe">
     <circle cx="340" cy="160" r="1.5" opacity="0.7">
       <animate attributeName="cy" values="160;120;90" dur="4s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.7;0.4;0" dur="4s" repeatCount="indefinite"/>
@@ -81,14 +81,14 @@
   </g>
 
   <text x="600" y="105" text-anchor="middle"
-    font-family="Cinzel, 'Trajan Pro', Georgia, 'Times New Roman', serif"
-    font-size="58" font-weight="700" fill="#ffe5b4" letter-spacing="3">
+    font-family="Cinzel, Georgia, serif"
+    font-size="58" font-weight="700" fill="#e0f2fe" letter-spacing="3">
     Mohamed Cheikh
   </text>
 
   <text x="600" y="142" text-anchor="middle"
-    font-family="Cinzel, 'Trajan Pro', Georgia, 'Times New Roman', serif"
-    font-size="14" font-weight="600" fill="#ff8c42" letter-spacing="6">
+    font-family="Cinzel, Georgia, serif"
+    font-size="14" font-weight="600" fill="#93c5fd" letter-spacing="6">
     MC88 · HOBBYIST WEB BUILDER
   </text>
 </svg>
