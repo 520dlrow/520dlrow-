@@ -1,96 +1,69 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" preserveAspectRatio="xMidYMid slice">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" preserveAspectRatio="none">
   <defs>
-    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#04080f"/>
-      <stop offset="60%" stop-color="#0a1526"/>
-      <stop offset="100%" stop-color="#132238"/>
+    <linearGradient id="flameBack" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#12001f"/>
+      <stop offset="100%" stop-color="#3b0764"/>
     </linearGradient>
-
-    <linearGradient id="c1" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#1e3a5f"/>
-      <stop offset="100%" stop-color="#0f1f33"/>
+    <linearGradient id="flameMid" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#2e1065"/>
+      <stop offset="100%" stop-color="#7e22ce"/>
     </linearGradient>
-    <linearGradient id="c2" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#2d4d73"/>
-      <stop offset="100%" stop-color="#152a42"/>
+    <linearGradient id="flameFront" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#4c1d95"/>
+      <stop offset="100%" stop-color="#a855f7"/>
     </linearGradient>
-    <linearGradient id="c3" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#3b5f8a"/>
-      <stop offset="100%" stop-color="#1e3a5f"/>
-    </linearGradient>
-    <linearGradient id="c4" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#5b82b3"/>
-      <stop offset="100%" stop-color="#2d4d73"/>
-    </linearGradient>
-
-    <radialGradient id="moon" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#dbeafe" stop-opacity="0.7"/>
-      <stop offset="100%" stop-color="#dbeafe" stop-opacity="0"/>
-    </radialGradient>
   </defs>
+  <style>
+    .bg { fill: #030005; }
+    .flame {
+      transform-origin: center bottom;
+      animation: flicker 2s infinite ease-in-out alternate;
+    }
+    .back { animation-duration: 4s; animation-delay: 0.5s; }
+    .mid { animation-duration: 3s; animation-delay: 1.5s; }
+    .front { animation-duration: 2s; animation-delay: 0.2s; }
+    
+    .sway1 { animation: sway 3s infinite ease-in-out alternate; }
+    .sway2 { animation: sway 4s infinite ease-in-out alternate-reverse; }
 
-  <rect width="1200" height="280" fill="url(#sky)"/>
-  <circle cx="960" cy="65" r="90" fill="url(#moon)"/>
-  <circle cx="960" cy="65" r="22" fill="#e0f2fe" opacity="0.9"/>
-
-  <g fill="#dbeafe">
-    <circle cx="120" cy="55" r="1" opacity="0.6"/>
-    <circle cx="260" cy="40" r="0.8" opacity="0.4"/>
-    <circle cx="400" cy="85" r="1.2" opacity="0.7"/>
-    <circle cx="560" cy="50" r="0.9" opacity="0.5"/>
-    <circle cx="700" cy="95" r="1" opacity="0.6"/>
-    <circle cx="830" cy="45" r="0.7" opacity="0.4"/>
-    <circle cx="1080" cy="60" r="1.1" opacity="0.7"/>
-    <circle cx="1150" cy="110" r="0.8" opacity="0.5"/>
+    @keyframes flicker {
+      0% { transform: scaleY(1) scaleX(1); opacity: 0.7; }
+      100% { transform: scaleY(1.1) scaleX(0.95); opacity: 1; }
+    }
+    @keyframes sway {
+      0% { transform: translateX(0px) scaleY(1); }
+      100% { transform: translateX(15px) scaleY(1.05); }
+    }
+  </style>
+  <rect width="100%" height="100%" class="bg" />
+  
+  <!-- Background Flames -->
+  <g class="flame back">
+    <path d="M 0 300 Q 100 200 150 100 Q 200 150 250 300 Z" fill="url(#flameBack)"/>
+    <path d="M 200 300 Q 300 150 400 50 Q 500 150 600 300 Z" fill="url(#flameBack)"/>
+    <path d="M 500 300 Q 600 180 700 80 Q 800 180 900 300 Z" fill="url(#flameBack)"/>
+    <path d="M 800 300 Q 900 200 1000 100 Q 1100 200 1200 300 Z" fill="url(#flameBack)"/>
   </g>
 
-  <!-- Layer 1 (farthest) -->
-  <g fill="url(#c1)" opacity="0.7">
-    <animateTransform attributeName="transform" type="translate"
-      values="0,0; -15,0; 0,0" dur="30s" repeatCount="indefinite"/>
-    <ellipse cx="150" cy="235" rx="200" ry="48"/>
-    <ellipse cx="500" cy="245" rx="220" ry="52"/>
-    <ellipse cx="850" cy="240" rx="230" ry="50"/>
-    <ellipse cx="1120" cy="245" rx="180" ry="46"/>
+  <!-- Mid Flames -->
+  <g class="flame mid sway1">
+    <path d="M 50 300 C 150 200, 50 100, 150 50 C 200 20, 250 100, 200 200 C 150 300, 250 300, 300 300 Z" fill="url(#flameMid)"/>
+    <path d="M 350 300 C 450 150, 350 50, 450 0 C 500 30, 550 120, 500 250 C 450 300, 550 300, 600 300 Z" fill="url(#flameMid)"/>
+    <path d="M 650 300 C 750 200, 650 100, 750 50 C 800 20, 850 100, 800 200 C 750 300, 850 300, 900 300 Z" fill="url(#flameMid)"/>
+    <path d="M 950 300 C 1050 150, 950 50, 1050 0 C 1100 30, 1150 120, 1100 250 C 1050 300, 1150 300, 1200 300 Z" fill="url(#flameMid)"/>
   </g>
 
-  <!-- Layer 2 -->
-  <g fill="url(#c2)" opacity="0.88">
-    <animateTransform attributeName="transform" type="translate"
-      values="0,0; 12,0; 0,0" dur="25s" repeatCount="indefinite"/>
-    <ellipse cx="230" cy="252" rx="170" ry="44"/>
-    <ellipse cx="580" cy="258" rx="190" ry="48"/>
-    <ellipse cx="900" cy="255" rx="180" ry="45"/>
+  <!-- Front Flames -->
+  <g class="flame front sway2">
+    <path d="M 100 300 C 200 180, 100 80, 200 30 C 250 0, 300 80, 250 180 C 200 280, 300 300, 350 300 Z" fill="url(#flameFront)"/>
+    <path d="M 400 300 C 500 150, 400 50, 500 10 C 550 -20, 600 60, 550 180 C 500 300, 600 300, 650 300 Z" fill="url(#flameFront)"/>
+    <path d="M 700 300 C 800 180, 700 80, 800 30 C 850 0, 900 80, 850 180 C 800 280, 900 300, 950 300 Z" fill="url(#flameFront)"/>
+    <path d="M 1000 300 C 1100 150, 1000 50, 1100 10 C 1150 -20, 1200 60, 1150 180 C 1100 300, 1200 300, 1250 300 Z" fill="url(#flameFront)"/>
   </g>
-
-  <!-- Layer 3 -->
-  <g fill="url(#c3)" opacity="0.95">
-    <animateTransform attributeName="transform" type="translate"
-      values="0,0; -9,0; 0,0" dur="20s" repeatCount="indefinite"/>
-    <ellipse cx="380" cy="268" rx="160" ry="40"/>
-    <ellipse cx="720" cy="272" rx="170" ry="42"/>
-    <ellipse cx="1050" cy="268" rx="150" ry="40"/>
-  </g>
-
-  <!-- Layer 4 (closest, brightest) -->
-  <g fill="url(#c4)">
-    <animateTransform attributeName="transform" type="translate"
-      values="0,0; 8,0; 0,0" dur="15s" repeatCount="indefinite"/>
-    <ellipse cx="200" cy="282" rx="150" ry="38"/>
-    <ellipse cx="520" cy="284" rx="160" ry="38"/>
-    <ellipse cx="860" cy="282" rx="170" ry="38"/>
-    <ellipse cx="1160" cy="284" rx="130" ry="36"/>
-  </g>
-
-  <text x="600" y="105" text-anchor="middle"
-    font-family="Cinzel, Georgia, serif"
-    font-size="58" font-weight="700" fill="#e0f2fe" letter-spacing="3">
-    Mohamed Cheikh
-  </text>
-
-  <text x="600" y="142" text-anchor="middle"
-    font-family="Cinzel, Georgia, serif"
-    font-size="14" font-weight="600" fill="#93c5fd" letter-spacing="6">
-    MC88 · HOBBYIST WEB BUILDER
-  </text>
+  
+  <!-- Floating Embers -->
+  <circle cx="200" cy="150" r="3" fill="#c084fc" class="flame front"/>
+  <circle cx="500" cy="80" r="4" fill="#a855f7" class="flame mid"/>
+  <circle cx="800" cy="200" r="2" fill="#c084fc" class="flame front"/>
+  <circle cx="1100" cy="120" r="3" fill="#a855f7" class="flame back"/>
 </svg>
