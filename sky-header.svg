@@ -8,51 +8,43 @@
       <stop offset="90%"  stop-color="#16304f"/>
       <stop offset="100%" stop-color="#1d3a5c"/>
     </linearGradient>
-
     <radialGradient id="horizonGlow" cx="50%" cy="100%" r="80%">
       <stop offset="0%"   stop-color="#4a7099" stop-opacity="0.32"/>
       <stop offset="45%"  stop-color="#2a4a6d" stop-opacity="0.13"/>
       <stop offset="100%" stop-color="#2a4a6d" stop-opacity="0"/>
     </radialGradient>
-
     <radialGradient id="moonHalo" cx="50%" cy="50%" r="50%">
       <stop offset="0%"   stop-color="#eaf2ff" stop-opacity="0.34"/>
       <stop offset="32%"  stop-color="#a9c2ee" stop-opacity="0.12"/>
       <stop offset="68%"  stop-color="#6d86b8" stop-opacity="0.045"/>
       <stop offset="100%" stop-color="#6d86b8" stop-opacity="0"/>
     </radialGradient>
-
     <radialGradient id="moonSurface" cx="36%" cy="34%" r="74%">
       <stop offset="0%"   stop-color="#ffffff"/>
       <stop offset="38%"  stop-color="#f8f7f1"/>
       <stop offset="70%"  stop-color="#e6e4d9"/>
       <stop offset="100%" stop-color="#c4c2b7"/>
     </radialGradient>
-
     <radialGradient id="moonLimb" cx="36%" cy="34%" r="74%">
       <stop offset="0%"   stop-color="#000000" stop-opacity="0"/>
       <stop offset="60%"  stop-color="#000000" stop-opacity="0"/>
       <stop offset="86%"  stop-color="#2a2a33" stop-opacity="0.12"/>
       <stop offset="100%" stop-color="#16161f" stop-opacity="0.40"/>
     </radialGradient>
-
     <radialGradient id="starGlow" cx="50%" cy="50%" r="50%">
       <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.85"/>
       <stop offset="28%"  stop-color="#cfe0ff" stop-opacity="0.26"/>
       <stop offset="100%" stop-color="#cfe0ff" stop-opacity="0"/>
     </radialGradient>
-
     <linearGradient id="streak" gradientUnits="userSpaceOnUse" x1="-120" y1="0" x2="0" y2="0">
       <stop offset="0%"   stop-color="#ffffff" stop-opacity="0"/>
       <stop offset="55%"  stop-color="#dbe9ff" stop-opacity="0.28"/>
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0.95"/>
     </linearGradient>
-
     <radialGradient id="vignette" cx="50%" cy="42%" r="80%">
       <stop offset="48%"  stop-color="#000000" stop-opacity="0"/>
       <stop offset="100%" stop-color="#000000" stop-opacity="0.5"/>
     </radialGradient>
-
     <filter id="blurLg" x="-60%" y="-60%" width="220%" height="220%">
       <feGaussianBlur stdDeviation="22"/>
     </filter>
@@ -62,22 +54,17 @@
     <filter id="craterBlur" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="0.7"/>
     </filter>
-
     <clipPath id="moonClip">
       <circle cx="950" cy="80" r="34"/>
     </clipPath>
-
     <style>
       .s1 { animation: tw1 7s   ease-in-out infinite alternate; }
       .s2 { animation: tw2 5.5s ease-in-out infinite alternate; }
       .s3 { animation: tw3 4.5s ease-in-out infinite alternate; }
-
       @keyframes tw1 { 0%,100% { opacity: .12 } 50% { opacity: .42 } }
       @keyframes tw2 { 0%,100% { opacity: .30 } 50% { opacity: .78 } }
       @keyframes tw3 { 0%,100% { opacity: .55 } 50% { opacity: 1   } }
-
       .shoot { animation: shoot 12s linear infinite; }
-
       @keyframes shoot {
         0%, 85% { transform: translate(0, 0);      opacity: 0; }
         87%     {                                  opacity: 1; }
@@ -86,9 +73,7 @@
       }
     </style>
   </defs>
-
   <rect width="100%" height="100%" fill="url(#skyGrad)"/>
-
   <g filter="url(#blurLg)">
     <ellipse cx="430" cy="72" rx="430" ry="66" fill="#7f9bd6" opacity="0.10" transform="rotate(-14 430 72)"/>
     <ellipse cx="370" cy="60" rx="250" ry="38" fill="#a8bdf0" opacity="0.11" transform="rotate(-14 370 60)"/>
@@ -97,9 +82,7 @@
     <ellipse cx="320" cy="58" rx="160" ry="11" fill="#0a0d1c" opacity="0.35" transform="rotate(-14 320 58)"/>
     <ellipse cx="560" cy="78" rx="120" ry="9"  fill="#0a0d1c" opacity="0.28" transform="rotate(-14 560 78)"/>
   </g>
-
   <rect width="100%" height="100%" fill="url(#horizonGlow)"/>
-
   <g>
     <circle class="s1" cx="85"  cy="68"  r=".45" fill="#ffffff" style="animation-delay:-1.2s"/>
     <circle class="s1" cx="168" cy="105" r=".55" fill="#dce9ff" style="animation-delay:-3.4s"/>
@@ -142,7 +125,6 @@
     <circle class="s1" cx="75"  cy="150" r=".45" fill="#dce9ff" style="animation-delay:-.4s"/>
     <circle class="s1" cx="1030" cy="200" r=".5" fill="#ffffff" style="animation-delay:-4.3s"/>
     <circle class="s1" cx="1180" cy="190" r=".55" fill="#ffffff" style="animation-delay:-2.0s"/>
-
     <circle class="s2" cx="40"  cy="25"  r=".7"  fill="#dce9ff" style="animation-delay:-1.5s"/>
     <circle class="s2" cx="205" cy="42"  r=".5"  fill="#ffffff" style="animation-delay:-3.7s"/>
     <circle class="s2" cx="240" cy="150" r=".7"  fill="#ffffff" style="animation-delay:-5.1s"/>
@@ -165,14 +147,12 @@
     <circle class="s2" cx="350" cy="10"  r=".5"  fill="#ffffff" style="animation-delay:-2.5s"/>
     <circle class="s2" cx="600" cy="10"  r=".45" fill="#ffffff" style="animation-delay:-6.7s"/>
     <circle class="s2" cx="900" cy="10"  r=".5"  fill="#ffffff" style="animation-delay:-1.8s"/>
-
     <circle class="s3" cx="130"  cy="18" r=".9"  fill="#ffffff" style="animation-delay:-2.2s"/>
     <circle class="s3" cx="300"  cy="22" r=".8"  fill="#ffffff" style="animation-delay:-4.9s"/>
     <circle class="s3" cx="448"  cy="30" r=".9"  fill="#ffffff" style="animation-delay:-.7s"/>
     <circle class="s3" cx="700"  cy="18" r=".8"  fill="#ffffff" style="animation-delay:-3.4s"/>
     <circle class="s3" cx="1100" cy="30" r=".8"  fill="#ffffff" style="animation-delay:-5.5s"/>
   </g>
-
   <g>
     <circle cx="130"  cy="18" r="6"   fill="url(#starGlow)"/>
     <circle cx="300"  cy="22" r="5"   fill="url(#starGlow)"/>
@@ -182,15 +162,12 @@
     <circle cx="1185" cy="55" r="4"   fill="url(#starGlow)" opacity="0.7"/>
     <circle cx="40"   cy="25" r="3.5" fill="url(#starGlow)" opacity="0.6"/>
   </g>
-
   <g>
     <circle cx="950" cy="80" r="180" fill="url(#moonHalo)"/>
     <circle cx="950" cy="80" r="78"  fill="url(#moonHalo)"/>
     <circle cx="950" cy="80" r="120" fill="url(#moonHalo)" opacity="0.5" filter="url(#blurMd)"/>
-
     <g clip-path="url(#moonClip)">
       <circle cx="950" cy="80" r="34" fill="url(#moonSurface)"/>
-
       <g filter="url(#craterBlur)">
         <ellipse cx="942" cy="74" rx="15" ry="12" fill="#b9b7ad" opacity="0.18"/>
         <ellipse cx="962" cy="92" rx="11" ry="9"  fill="#b9b7ad" opacity="0.14"/>
@@ -207,11 +184,9 @@
         <ellipse cx="934" cy="68" rx="5" ry="4.5" fill="#ffffff" opacity="0.10"/>
         <ellipse cx="961" cy="86" rx="6" ry="5"   fill="#ffffff" opacity="0.07"/>
       </g>
-
       <circle cx="950" cy="80" r="34" fill="url(#moonLimb)"/>
     </g>
   </g>
-
   <g transform="translate(180,40) rotate(22)">
     <g class="shoot" style="animation-delay:0s">
       <line x1="-115" y1="0" x2="0" y2="0" stroke="url(#streak)" stroke-width="1.4" stroke-linecap="round"/>
@@ -219,7 +194,6 @@
       <circle cx="0" cy="0" r="1.7" fill="#ffffff"/>
     </g>
   </g>
-
   <g transform="translate(560,25) rotate(30)">
     <g class="shoot" style="animation-delay:-4.5s">
       <line x1="-95" y1="0" x2="0" y2="0" stroke="url(#streak)" stroke-width="1.2" stroke-linecap="round"/>
@@ -227,7 +201,6 @@
       <circle cx="0" cy="0" r="1.4" fill="#ffffff"/>
     </g>
   </g>
-
   <g transform="translate(80,120) rotate(16)">
     <g class="shoot" style="animation-delay:-8s">
       <line x1="-80" y1="0" x2="0" y2="0" stroke="url(#streak)" stroke-width="1" stroke-linecap="round"/>
@@ -235,6 +208,5 @@
       <circle cx="0" cy="0" r="1.2" fill="#ffffff"/>
     </g>
   </g>
-
   <rect width="100%" height="100%" fill="url(#vignette)"/>
 </svg>
