@@ -64,14 +64,26 @@
       <feGaussianBlur stdDeviation="8"/>
     </filter>
     <style>
-      .driftSlow  { animation: driftSlow 16s ease-in-out infinite alternate; }
-      .driftMed   { animation: driftMed  12s ease-in-out infinite alternate; }
-      .driftFast  { animation: driftFast  9s ease-in-out infinite alternate; }
-      @keyframes driftSlow { from { transform: translateX(-14px) } to { transform: translateX(14px) } }
-      @keyframes driftMed  { from { transform: translateX(18px) }  to { transform: translateX(-18px) } }
-      @keyframes driftFast { from { transform: translateX(-24px) } to { transform: translateX(24px) } }
-      .shimmer { animation: shimmer 5.5s ease-in-out infinite alternate; }
-      @keyframes shimmer { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+      .driftSlow  { animation: driftSlow 8s ease-in-out infinite alternate; }
+      .driftMed   { animation: driftMed  6s ease-in-out infinite alternate; }
+      .driftFast  { animation: driftFast  4s ease-in-out infinite alternate; }
+      @keyframes driftSlow { 
+        0%   { transform: translate(-35px, 0px); } 
+        100% { transform: translate(35px, -12px); } 
+      }
+      @keyframes driftMed  { 
+        0%   { transform: translate(45px, -8px); } 
+        100% { transform: translate(-45px, 10px); } 
+      }
+      @keyframes driftFast { 
+        0%   { transform: translate(-60px, 0px); } 
+        100% { transform: translate(60px, -18px); } 
+      }
+      .shimmer { animation: shimmer 3s ease-in-out infinite alternate; }
+      @keyframes shimmer { 
+        0% { opacity: 0.4; transform: translateY(0px); } 
+        100% { opacity: 1; transform: translateY(-8px); } 
+      }
     </style>
   </defs>
   <rect width="100%" height="100%" fill="url(#waterBase)"/>
