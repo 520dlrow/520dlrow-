@@ -1,42 +1,112 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" preserveAspectRatio="none">
   <defs>
+    <!-- Background Gradient: Deep night sky to subtle purple -->
     <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#05020a"/>
-      <stop offset="60%" stop-color="#1a0b2e"/>
-      <stop offset="100%" stop-color="#2e1065"/>
+      <stop offset="0%" stop-color="#0a0a1a"/>
+      <stop offset="70%" stop-color="#1a1035"/>
+      <stop offset="100%" stop-color="#1a0b2e"/>
     </linearGradient>
-    <linearGradient id="cloudGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#4c1d95" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#1a0b2e" stop-opacity="0"/>
+
+    <!-- Cloud Gradients -->
+    <linearGradient id="cloudBack" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e1b4b" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0a0a1a" stop-opacity="0"/>
     </linearGradient>
-    <filter id="blur">
-      <feGaussianBlur stdDeviation="8" />
+    <linearGradient id="cloudMid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#475569" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#1e1b4b" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="cloudFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e2e8f0" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#c084fc" stop-opacity="0.1"/>
+    </linearGradient>
+
+    <!-- Moon Glow -->
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e0f2fe" stop-opacity="0.8"/>
+      <stop offset="40%" stop-color="#c084fc" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#c084fc" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Soft Blur for depth -->
+    <filter id="softBlur">
+      <feGaussianBlur stdDeviation="4" />
+    </filter>
+    <filter id="heavyBlur">
+      <feGaussianBlur stdDeviation="12" />
     </filter>
   </defs>
-  
+
   <style>
-    .star { fill: #d8b4fe; animation: twinkle 4s infinite alternate; }
-    .cloud { animation: drift 25s infinite linear; }
-    @keyframes twinkle { 0% { opacity: 0.2; } 100% { opacity: 0.9; } }
-    @keyframes drift { 0% { transform: translateX(0); } 100% { transform: translateX(-100px); } }
+    .star { fill: #ffffff; animation: twinkle 4s infinite alternate; }
+    .moon { animation: pulse 6s infinite alternate; }
+    .cloud-layer { transform-origin: center; }
+    .drift-slow { animation: drift 40s infinite linear; }
+    .drift-mid { animation: drift 25s infinite linear reverse; }
+    .drift-fast { animation: drift 15s infinite linear; }
+
+    @keyframes twinkle {
+      0% { opacity: 0.2; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1.2); }
+    }
+    @keyframes pulse {
+      0% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+    @keyframes drift {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-200px); }
+    }
   </style>
 
+  <!-- Sky Background -->
   <rect width="100%" height="100%" fill="url(#skyGrad)"/>
-  
+
+  <!-- Moon -->
+  <g class="moon">
+    <circle cx="950" cy="80" r="70" fill="url(#moonGlow)"/>
+    <circle cx="950" cy="80" r="28" fill="#f8fafc"/>
+    <circle cx="940" cy="75" r="5" fill="#e2e8f0" opacity="0.6"/>
+    <circle cx="960" cy="90" r="8" fill="#e2e8f0" opacity="0.4"/>
+    <circle cx="955" cy="70" r="3" fill="#e2e8f0" opacity="0.5"/>
+  </g>
+
   <!-- Stars -->
   <g class="star">
     <circle cx="100" cy="50" r="1.5" style="animation-delay: 0s;"/>
-    <circle cx="300" cy="80" r="1" style="animation-delay: 1.5s;"/>
-    <circle cx="550" cy="40" r="2" style="animation-delay: 0.8s;"/>
-    <circle cx="800" cy="90" r="1.5" style="animation-delay: 2.2s;"/>
-    <circle cx="1050" cy="60" r="1" style="animation-delay: 1.1s;"/>
-    <circle cx="1150" cy="120" r="1.5" style="animation-delay: 3s;"/>
+    <circle cx="250" cy="90" r="1" style="animation-delay: 1.5s;"/>
+    <circle cx="400" cy="40" r="2" style="animation-delay: 0.8s;"/>
+    <circle cx="550" cy="70" r="1.2" style="animation-delay: 2.2s;"/>
+    <circle cx="700" cy="30" r="1.8" style="animation-delay: 1.1s;"/>
+    <circle cx="850" cy="60" r="1" style="animation-delay: 3s;"/>
+    <circle cx="1100" cy="50" r="1.5" style="animation-delay: 0.5s;"/>
+    <circle cx="1150" cy="120" r="1.2" style="animation-delay: 2.7s;"/>
+    <circle cx="50" cy="150" r="1" style="animation-delay: 1.8s;"/>
+    <circle cx="180" cy="130" r="1.5" style="animation-delay: 0.3s;"/>
   </g>
 
-  <!-- Clouds -->
-  <g class="cloud" fill="url(#cloudGrad)" filter="url(#blur)">
-    <ellipse cx="200" cy="220" rx="250" ry="60"/>
-    <ellipse cx="600" cy="240" rx="300" ry="70"/>
-    <ellipse cx="1000" cy="210" rx="280" ry="60"/>
+  <!-- Layer 1: Distant, dark clouds -->
+  <g class="cloud-layer drift-slow" filter="url(#heavyBlur)" opacity="0.6">
+    <path d="M -100,250 Q 50,180 150,220 T 350,190 T 550,240 T 750,180 T 950,220 T 1150,190 T 1300,220 L 1300,300 L -100,300 Z" fill="url(#cloudBack)"/>
+  </g>
+
+  <!-- Layer 2: Mid-ground, detailed clouds -->
+  <g class="cloud-layer drift-mid" filter="url(#softBlur)" opacity="0.8">
+    <path d="M -50,260 Q 80,200 200,230 Q 280,180 380,210 Q 480,160 580,200 Q 680,150 780,190 Q 880,140 980,180 Q 1080,160 1200,200 L 1250,300 L -50,300 Z" fill="url(#cloudMid)"/>
+    <!-- Fluffy details -->
+    <path d="M 150,240 Q 200,210 250,240 Q 300,220 350,250 Z" fill="#64748b" opacity="0.5"/>
+    <path d="M 550,220 Q 600,190 650,220 Q 700,200 750,230 Z" fill="#64748b" opacity="0.5"/>
+    <path d="M 850,200 Q 900,170 950,200 Q 1000,180 1050,210 Z" fill="#64748b" opacity="0.5"/>
+  </g>
+
+  <!-- Layer 3: Foreground, bright, fluffy clouds with pink/purple highlights -->
+  <g class="cloud-layer drift-fast" opacity="0.9">
+    <path d="M 50,280 Q 150,230 250,260 Q 350,210 450,240 Q 550,190 650,230 Q 750,180 850,220 Q 950,190 1050,230 Q 1150,200 1250,240 L 1250,300 L 50,300 Z" fill="url(#cloudFront)"/>
+    <!-- Highlights mimicking the photos -->
+    <path d="M 120,265 Q 180,240 240,265 Q 300,245 360,270 Z" fill="#f8fafc" opacity="0.6"/>
+    <path d="M 480,245 Q 540,220 600,245 Q 660,225 720,250 Z" fill="#f8fafc" opacity="0.6"/>
+    <path d="M 820,230 Q 880,205 940,230 Q 1000,210 1060,235 Z" fill="#f8fafc" opacity="0.6"/>
+    <!-- Soft purple glow at the base -->
+    <path d="M 0,290 Q 300,270 600,290 T 1200,290 L 1200,300 L 0,300 Z" fill="#c084fc" opacity="0.3"/>
   </g>
 </svg>
