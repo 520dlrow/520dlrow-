@@ -1,69 +1,71 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" preserveAspectRatio="none">
   <defs>
-    <linearGradient id="flameBack" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0%" stop-color="#12001f"/>
-      <stop offset="100%" stop-color="#3b0764"/>
+    <linearGradient id="gradBase" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#0a001a"/>
+      <stop offset="100%" stop-color="#1a0033"/>
     </linearGradient>
-    <linearGradient id="flameMid" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0%" stop-color="#2e1065"/>
-      <stop offset="100%" stop-color="#7e22ce"/>
+    <linearGradient id="gradBack" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#3b0764"/>
+      <stop offset="100%" stop-color="#6b21a8"/>
     </linearGradient>
-    <linearGradient id="flameFront" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0%" stop-color="#4c1d95"/>
+    <linearGradient id="gradMid" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#6b21a8"/>
       <stop offset="100%" stop-color="#a855f7"/>
     </linearGradient>
+    <linearGradient id="gradFront" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d8b4fe"/>
+    </linearGradient>
   </defs>
+  
   <style>
-    .bg { fill: #030005; }
-    .flame {
-      transform-origin: center bottom;
-      animation: flicker 2s infinite ease-in-out alternate;
-    }
-    .back { animation-duration: 4s; animation-delay: 0.5s; }
-    .mid { animation-duration: 3s; animation-delay: 1.5s; }
-    .front { animation-duration: 2s; animation-delay: 0.2s; }
+    .bg { fill: url(#gradBase); }
+    .flame { transform-origin: bottom center; }
+    .f1 { animation: flicker 1.5s infinite alternate ease-in-out; }
+    .f2 { animation: flicker 2.2s infinite alternate-reverse ease-in-out; }
+    .f3 { animation: flicker 1.8s infinite alternate ease-in-out; }
+    .f4 { animation: flicker 2.5s infinite alternate-reverse ease-in-out; }
     
-    .sway1 { animation: sway 3s infinite ease-in-out alternate; }
-    .sway2 { animation: sway 4s infinite ease-in-out alternate-reverse; }
-
     @keyframes flicker {
-      0% { transform: scaleY(1) scaleX(1); opacity: 0.7; }
-      100% { transform: scaleY(1.1) scaleX(0.95); opacity: 1; }
-    }
-    @keyframes sway {
-      0% { transform: translateX(0px) scaleY(1); }
-      100% { transform: translateX(15px) scaleY(1.05); }
+      0% { transform: scaleY(1) scaleX(1) skewX(0deg); opacity: 0.8; }
+      50% { transform: scaleY(1.15) scaleX(0.95) skewX(2deg); opacity: 1; }
+      100% { transform: scaleY(0.9) scaleX(1.05) skewX(-2deg); opacity: 0.7; }
     }
   </style>
+  
   <rect width="100%" height="100%" class="bg" />
-  
-  <!-- Background Flames -->
-  <g class="flame back">
-    <path d="M 0 300 Q 100 200 150 100 Q 200 150 250 300 Z" fill="url(#flameBack)"/>
-    <path d="M 200 300 Q 300 150 400 50 Q 500 150 600 300 Z" fill="url(#flameBack)"/>
-    <path d="M 500 300 Q 600 180 700 80 Q 800 180 900 300 Z" fill="url(#flameBack)"/>
-    <path d="M 800 300 Q 900 200 1000 100 Q 1100 200 1200 300 Z" fill="url(#flameBack)"/>
+
+  <!-- Background Layer: Dark, broad, wispy shapes -->
+  <g class="flame f4" fill="url(#gradBack)" opacity="0.6">
+    <path d="M 0,300 L 50,150 L 80,180 L 100,80 L 130,160 L 180,50 L 200,140 L 250,300 Z" />
+    <path d="M 200,300 L 280,180 L 310,220 L 350,100 L 380,190 L 450,60 L 480,170 L 520,300 Z" />
+    <path d="M 450,300 L 550,130 L 580,200 L 650,70 L 680,180 L 750,90 L 780,200 L 850,300 Z" />
+    <path d="M 800,300 L 880,160 L 920,210 L 980,80 L 1020,170 L 1080,50 L 1120,150 L 1200,300 Z" />
   </g>
 
-  <!-- Mid Flames -->
-  <g class="flame mid sway1">
-    <path d="M 50 300 C 150 200, 50 100, 150 50 C 200 20, 250 100, 200 200 C 150 300, 250 300, 300 300 Z" fill="url(#flameMid)"/>
-    <path d="M 350 300 C 450 150, 350 50, 450 0 C 500 30, 550 120, 500 250 C 450 300, 550 300, 600 300 Z" fill="url(#flameMid)"/>
-    <path d="M 650 300 C 750 200, 650 100, 750 50 C 800 20, 850 100, 800 200 C 750 300, 850 300, 900 300 Z" fill="url(#flameMid)"/>
-    <path d="M 950 300 C 1050 150, 950 50, 1050 0 C 1100 30, 1150 120, 1100 250 C 1050 300, 1150 300, 1200 300 Z" fill="url(#flameMid)"/>
+  <!-- Mid Layer: Sharper, brighter purple -->
+  <g class="flame f2" fill="url(#gradMid)" opacity="0.8">
+    <path d="M 0,300 L 30,180 L 60,220 L 90,100 L 120,190 L 160,120 L 190,210 L 230,300 Z" />
+    <path d="M 180,300 L 250,150 L 280,230 L 320,80 L 350,180 L 420,110 L 460,220 L 500,300 Z" />
+    <path d="M 420,300 L 520,140 L 550,220 L 600,60 L 640,190 L 700,100 L 740,210 L 800,300 Z" />
+    <path d="M 750,300 L 830,170 L 870,240 L 920,90 L 960,200 L 1020,120 L 1060,220 L 1120,300 Z" />
   </g>
 
-  <!-- Front Flames -->
-  <g class="flame front sway2">
-    <path d="M 100 300 C 200 180, 100 80, 200 30 C 250 0, 300 80, 250 180 C 200 280, 300 300, 350 300 Z" fill="url(#flameFront)"/>
-    <path d="M 400 300 C 500 150, 400 50, 500 10 C 550 -20, 600 60, 550 180 C 500 300, 600 300, 650 300 Z" fill="url(#flameFront)"/>
-    <path d="M 700 300 C 800 180, 700 80, 800 30 C 850 0, 900 80, 850 180 C 800 280, 900 300, 950 300 Z" fill="url(#flameFront)"/>
-    <path d="M 1000 300 C 1100 150, 1000 50, 1100 10 C 1150 -20, 1200 60, 1150 180 C 1100 300, 1200 300, 1250 300 Z" fill="url(#flameFront)"/>
+  <!-- Front Layer: Brightest, most detailed, sharpest tendrils -->
+  <g class="flame f1" fill="url(#gradFront)" opacity="0.9">
+    <path d="M 0,300 L 20,220 L 40,250 L 70,150 L 90,240 L 120,180 L 150,260 L 180,300 Z" />
+    <path d="M 140,300 L 190,200 L 210,260 L 250,120 L 280,230 L 320,160 L 360,250 L 400,300 Z" />
+    <path d="M 350,300 L 420,180 L 450,250 L 500,100 L 540,220 L 580,140 L 620,240 L 680,300 Z" />
+    <path d="M 600,300 L 680,190 L 720,260 L 770,130 L 810,240 L 860,160 L 900,250 L 950,300 Z" />
+    <path d="M 850,300 L 920,200 L 960,270 L 1010,140 L 1050,250 L 1100,170 L 1140,260 L 1200,300 Z" />
   </g>
   
-  <!-- Floating Embers -->
-  <circle cx="200" cy="150" r="3" fill="#c084fc" class="flame front"/>
-  <circle cx="500" cy="80" r="4" fill="#a855f7" class="flame mid"/>
-  <circle cx="800" cy="200" r="2" fill="#c084fc" class="flame front"/>
-  <circle cx="1100" cy="120" r="3" fill="#a855f7" class="flame back"/>
+  <!-- Embers -->
+  <g class="flame f3" fill="#d8b4fe">
+    <circle cx="150" cy="100" r="2" />
+    <circle cx="400" cy="150" r="3" />
+    <circle cx="650" cy="80" r="2" />
+    <circle cx="900" cy="120" r="3" />
+    <circle cx="1100" cy="180" r="2" />
+  </g>
 </svg>
