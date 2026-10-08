@@ -8,62 +8,52 @@
       <stop offset="78%"  stop-color="#103453"/>
       <stop offset="100%" stop-color="#0a2540"/>
     </linearGradient>
-
     <linearGradient id="horizonHaze" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"   stop-color="#3d6b96" stop-opacity="0.55"/>
       <stop offset="30%"  stop-color="#2a5175" stop-opacity="0.30"/>
       <stop offset="100%" stop-color="#2a5175" stop-opacity="0"/>
     </linearGradient>
-
     <linearGradient id="moonPath" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"   stop-color="#eaf2ff" stop-opacity="0.85"/>
       <stop offset="22%"  stop-color="#cfe0f7" stop-opacity="0.48"/>
       <stop offset="55%"  stop-color="#a8c4e4" stop-opacity="0.20"/>
       <stop offset="100%" stop-color="#7fa5c9" stop-opacity="0.03"/>
     </linearGradient>
-
     <radialGradient id="moonGlowSea" cx="50%" cy="50%" r="50%">
       <stop offset="0%"   stop-color="#eaf2ff" stop-opacity="0.55"/>
       <stop offset="40%"  stop-color="#b8cdec" stop-opacity="0.18"/>
       <stop offset="100%" stop-color="#b8cdec" stop-opacity="0"/>
     </radialGradient>
-
     <linearGradient id="waveFar" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"   stop-color="#7fa3c6" stop-opacity="0.35"/>
       <stop offset="60%"  stop-color="#3f6285" stop-opacity="0.20"/>
       <stop offset="100%" stop-color="#1e3d5c" stop-opacity="0.05"/>
     </linearGradient>
-
     <linearGradient id="waveMid" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"   stop-color="#a6c4e2" stop-opacity="0.55"/>
       <stop offset="45%"  stop-color="#4d76a0" stop-opacity="0.32"/>
       <stop offset="100%" stop-color="#1a3552" stop-opacity="0.08"/>
     </linearGradient>
-
     <linearGradient id="waveNear" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"   stop-color="#c7dcf2" stop-opacity="0.75"/>
       <stop offset="30%"  stop-color="#5a86b0" stop-opacity="0.45"/>
       <stop offset="70%"  stop-color="#1d3d5e" stop-opacity="0.85"/>
       <stop offset="100%" stop-color="#0a1c30" stop-opacity="0.95"/>
     </linearGradient>
-
     <linearGradient id="foam" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.95"/>
       <stop offset="45%"  stop-color="#dfeafc" stop-opacity="0.55"/>
       <stop offset="100%" stop-color="#b6c9e0" stop-opacity="0"/>
     </linearGradient>
-
     <radialGradient id="glint" cx="50%" cy="50%" r="50%">
       <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.85"/>
       <stop offset="40%"  stop-color="#d8e7ff" stop-opacity="0.35"/>
       <stop offset="100%" stop-color="#d8e7ff" stop-opacity="0"/>
     </radialGradient>
-
     <radialGradient id="spray" cx="50%" cy="50%" r="50%">
       <stop offset="0%"   stop-color="#cfe0f2" stop-opacity="0.40"/>
       <stop offset="100%" stop-color="#cfe0f2" stop-opacity="0"/>
     </radialGradient>
-
     <filter id="softBlur" x="-60%" y="-60%" width="220%" height="220%">
       <feGaussianBlur stdDeviation="5"/>
     </filter>
@@ -73,68 +63,34 @@
     <filter id="glowSoft" x="-80%" y="-80%" width="260%" height="260%">
       <feGaussianBlur stdDeviation="8"/>
     </filter>
-
     <style>
       .driftSlow  { animation: driftSlow 16s ease-in-out infinite alternate; }
       .driftMed   { animation: driftMed  12s ease-in-out infinite alternate; }
       .driftFast  { animation: driftFast  9s ease-in-out infinite alternate; }
-
       @keyframes driftSlow { from { transform: translateX(-14px) } to { transform: translateX(14px) } }
       @keyframes driftMed  { from { transform: translateX(18px) }  to { transform: translateX(-18px) } }
       @keyframes driftFast { from { transform: translateX(-24px) } to { transform: translateX(24px) } }
-
       .shimmer { animation: shimmer 5.5s ease-in-out infinite alternate; }
       @keyframes shimmer { 0%,100% { opacity:.55 } 50% { opacity:1 } }
     </style>
   </defs>
-
   <rect width="100%" height="100%" fill="url(#waterBase)"/>
-
   <rect width="100%" height="42%" fill="url(#horizonHaze)"/>
-
   <ellipse cx="950" cy="70" rx="260" ry="55" fill="url(#moonGlowSea)" filter="url(#glowSoft)"/>
   <path d="M 830 8 L 1070 8 L 1140 300 L 760 300 Z"
         fill="url(#moonPath)" opacity="0.35" filter="url(#softBlur)"/>
-
   <g class="driftSlow" filter="url(#farBlur)" opacity="0.75">
-    <path d="M 0 118
-             Q 60 112 120 118 T 240 118 T 360 117 T 480 119 T 600 117
-             T 720 118 T 840 117 T 960 119 T 1080 117 T 1200 118
-             L 1200 300 L 0 300 Z"
-          fill="url(#waveFar)"/>
-    <path d="M 0 132
-             Q 75 126 150 132 T 300 132 T 450 131 T 600 133 T 750 131
-             T 900 132 T 1050 131 T 1200 132
-             L 1200 300 L 0 300 Z"
-          fill="url(#waveFar)" opacity="0.85"/>
+    <path d="M 0 118 Q 60 112 120 118 T 240 118 T 360 117 T 480 119 T 600 117 T 720 118 T 840 117 T 960 119 T 1080 117 T 1200 118 L 1200 300 L 0 300 Z" fill="url(#waveFar)"/>
+    <path d="M 0 132 Q 75 126 150 132 T 300 132 T 450 131 T 600 133 T 750 131 T 900 132 T 1050 131 T 1200 132 L 1200 300 L 0 300 Z" fill="url(#waveFar)" opacity="0.85"/>
   </g>
-
   <g class="driftMed" filter="url(#softBlur)">
-    <path d="M 0 156
-             Q 50 146 100 156 T 200 156 T 300 154 T 400 157 T 500 155
-             T 600 157 T 700 155 T 800 157 T 900 155 T 1000 157
-             T 1100 155 T 1200 156
-             L 1200 300 L 0 300 Z"
-          fill="url(#waveMid)" opacity="0.9"/>
-    <path d="M 0 156
-             Q 50 146 100 156 T 200 156 T 300 154 T 400 157
-             T 500 155 T 600 157 T 700 155 T 800 157 T 900 155
-             T 1000 157 T 1100 155 T 1200 156"
-          fill="none" stroke="#dbe8f7" stroke-width="1" opacity="0.35"/>
+    <path d="M 0 156 Q 50 146 100 156 T 200 156 T 300 154 T 400 157 T 500 155 T 600 157 T 700 155 T 800 157 T 900 155 T 1000 157 T 1100 155 T 1200 156 L 1200 300 L 0 300 Z" fill="url(#waveMid)" opacity="0.9"/>
+    <path d="M 0 156 Q 50 146 100 156 T 200 156 T 300 154 T 400 157 T 500 155 T 600 157 T 700 155 T 800 157 T 900 155 T 1000 157 T 1100 155 T 1200 156" fill="none" stroke="#dbe8f7" stroke-width="1" opacity="0.35"/>
   </g>
-
   <g class="driftFast">
-    <path d="M 0 194
-             Q 80 178 160 194 T 320 194 T 480 190 T 640 196 T 800 190
-             T 960 196 T 1120 190 T 1200 194
-             L 1200 300 L 0 300 Z"
-          fill="url(#waveNear)"/>
-    <path d="M 0 194
-             Q 80 178 160 194 T 320 194 T 480 190 T 640 196 T 800 190
-             T 960 196 T 1120 190 T 1200 194"
-          fill="none" stroke="#eef5ff" stroke-width="1.6" opacity="0.55"/>
+    <path d="M 0 194 Q 80 178 160 194 T 320 194 T 480 190 T 640 196 T 800 190 T 960 196 T 1120 190 T 1200 194 L 1200 300 L 0 300 Z" fill="url(#waveNear)"/>
+    <path d="M 0 194 Q 80 178 160 194 T 320 194 T 480 190 T 640 196 T 800 190 T 960 196 T 1120 190 T 1200 194" fill="none" stroke="#eef5ff" stroke-width="1.6" opacity="0.55"/>
   </g>
-
   <g opacity="0.9">
     <ellipse class="shimmer" cx="140" cy="190" rx="26" ry="2.6" fill="url(#foam)" style="animation-delay:-.4s"/>
     <ellipse class="shimmer" cx="330" cy="191" rx="32" ry="2.8" fill="url(#foam)" style="animation-delay:-1.9s"/>
@@ -143,19 +99,10 @@
     <ellipse class="shimmer" cx="980" cy="190" rx="28" ry="2.6" fill="url(#foam)" style="animation-delay:-2.6s"/>
     <ellipse class="shimmer" cx="1130" cy="188" rx="22" ry="2.2" fill="url(#foam)" style="animation-delay:-4.1s"/>
   </g>
-
   <g class="driftSlow">
-    <path d="M 0 240
-             Q 100 222 200 240 T 400 240 T 600 236 T 800 242 T 1000 238
-             T 1200 240
-             L 1200 300 L 0 300 Z"
-          fill="#0a1c30" opacity="0.95"/>
-    <path d="M 0 240
-             Q 100 222 200 240 T 400 240 T 600 236 T 800 242 T 1000 238
-             T 1200 240"
-          fill="none" stroke="#b6cbe2" stroke-width="1.2" opacity="0.4"/>
+    <path d="M 0 240 Q 100 222 200 240 T 400 240 T 600 236 T 800 242 T 1000 238 T 1200 240 L 1200 300 L 0 300 Z" fill="#0a1c30" opacity="0.95"/>
+    <path d="M 0 240 Q 100 222 200 240 T 400 240 T 600 236 T 800 242 T 1000 238 T 1200 240" fill="none" stroke="#b6cbe2" stroke-width="1.2" opacity="0.4"/>
   </g>
-
   <g class="shimmer" opacity="0.85">
     <ellipse cx="880"  cy="150" rx="30" ry="2"  fill="url(#glint)"/>
     <ellipse cx="930"  cy="168" rx="42" ry="2.4" fill="url(#glint)" opacity="0.75"/>
@@ -166,10 +113,8 @@
     <ellipse cx="980"  cy="262" rx="44" ry="2.6" fill="url(#glint)" opacity="0.5"/>
     <ellipse cx="1010" cy="280" rx="60" ry="3"  fill="url(#glint)" opacity="0.45"/>
   </g>
-
   <ellipse cx="220" cy="205" rx="180" ry="16" fill="url(#spray)" opacity="0.4" filter="url(#softBlur)"/>
   <ellipse cx="640" cy="215" rx="200" ry="18" fill="url(#spray)" opacity="0.35" filter="url(#softBlur)"/>
   <ellipse cx="1050" cy="230" rx="170" ry="16" fill="url(#spray)" opacity="0.3" filter="url(#softBlur)"/>
-
   <rect x="0" y="0" width="100%" height="10" fill="#0a1220" opacity="0.55"/>
 </svg>
